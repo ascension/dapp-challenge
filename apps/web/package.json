@@ -1,0 +1,45 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "yarn graphql-codegen",
+    "codegen:watch": "yarn graphql-codegen --watch"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.5",
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "cookies-next": "^2.1.1",
+    "ethers": "^5.7.2",
+    "formik": "^2.2.9",
+    "framer-motion": "^8.5.0",
+    "lodash": "^4.17.21",
+    "next": "13.1.4",
+    "next-axiom": "^0.16.0",
+    "moment": "^2.29.4",
+    "react": "latest",
+    "react-dom": "latest",
+    "wagmi": "^0.12.10",
+    "web3": "^1.9.0"
+  },
+  "devDependencies": {
+    "@ascension/config": "*",
+    "@types/react": "18.0.31",
+    "@types/react-dates": "^21.8.3",
+    "apollo": "^2.34.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.32.0",
+    "next-transpile-modules": "10.0.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "tsconfig": "*",
+    "typescript": "^4.9.4"
+  }
+}

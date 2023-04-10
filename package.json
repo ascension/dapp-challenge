@@ -1,0 +1,46 @@
+{
+  "name": "turborepo-starter",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-emoji-conventional"
+    }
+  },
+  "scripts": {
+    "commit": "cz",
+    "build": "turbo run build",
+    "docker:hh:build": "docker build -f ./apps/hardhat/Dockerfile . -t hhdocker",
+    "dev": "turbo run dev",
+    "dev:jerrod": "turbo run dev --scope=jerrod.bunce.io",
+    "dev:plume": "turbo run dev --scope=plume --scope=backend",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "storybook": "turbo run storybook",
+    "build:storybook": "turbo run build:storybook",
+    "build:ui": "turbo run build:ui",
+    "db:deploy": "turbo run db:deploy --scope=@ascension/database",
+    "db:push": "turbo run db:push --scope=@ascension/database",
+    "test": "turbo run test"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "dependencies": {
+    "@manypkg/cli": "^0.20.0",
+    "next-link": "^2.0.0",
+    "prettier": "^2.8.3",
+    "react-dom": "^18.2.0",
+    "tsx": "^3.12.2",
+    "turbo": "^1.7.3"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-emoji-conventional": "^1.0.1"
+  }
+}
