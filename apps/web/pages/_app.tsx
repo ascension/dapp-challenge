@@ -1,12 +1,10 @@
-import type { AppContext, AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
-import { getCookies } from "cookies-next";
-import NextApp from "next/app";
 import { providers } from "ethers";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { hardhat } from "wagmi/chains";
-import { createClient, WagmiConfig, useAccount, useNetwork } from "wagmi";
+import { createClient, WagmiConfig } from "wagmi";
 import { CHAIN_ID } from "../lib/const";
 
 // import WalletNotConnected from "./components/WalletNotConnected";
@@ -28,7 +26,10 @@ const client = createClient({
 const theme = extendTheme({
   styles: {
     global: {
-      "html, body": {
+      html: {
+        "background-color": "#110e35",
+      },
+      body: {
         background:
           "linear-gradient(55.05deg,#19163b 56.3%,#783f53 107.97%,#ed7171 128.41%)",
       },
@@ -45,16 +46,5 @@ function App({ Component, pageProps }: AppProps) {
     </ChakraProvider>
   );
 }
-
-App.getInitialProps = async (ctx: AppContext) => {
-  const appProps = await NextApp.getInitialProps(ctx);
-  const cookies = getCookies({ req: ctx.ctx.req, res: ctx.ctx.res });
-  return {
-    pageProps: {
-      ...appProps,
-      cookies,
-    },
-  };
-};
 
 export default App;

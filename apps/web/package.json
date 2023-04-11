@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "codegen": "yarn graphql-codegen",
-    "codegen:watch": "yarn graphql-codegen --watch"
+    "lint": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.7.5",
@@ -21,18 +19,18 @@
     "formik": "^2.2.9",
     "framer-motion": "^8.5.0",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "next": "13.1.4",
     "next-axiom": "^0.16.0",
-    "moment": "^2.29.4",
     "react": "latest",
     "react-dom": "latest",
+    "react-no-ssr": "^1.1.0",
     "wagmi": "^0.12.10",
     "web3": "^1.9.0"
   },
   "devDependencies": {
     "@ascension/config": "*",
     "@types/react": "18.0.31",
-    "@types/react-dates": "^21.8.3",
     "apollo": "^2.34.0",
     "autoprefixer": "^10.4.13",
     "eslint": "8.32.0",
