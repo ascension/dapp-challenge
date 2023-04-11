@@ -10,7 +10,7 @@ RUN apk update
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN turbo prune --scope=hardhat --docker
+RUN turbo prune --scope=@ascension/hardhat --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM node:16-alpine3.17 AS installer
@@ -26,7 +26,7 @@ RUN yarn install
 
 # Build the project
 COPY --from=builder /app .
-RUN yarn turbo run build --filter=hardhat
+RUN yarn turbo run build --filter=@ascension/hardhat
 
 FROM node:16-alpine3.17 AS runner
 WORKDIR /app
