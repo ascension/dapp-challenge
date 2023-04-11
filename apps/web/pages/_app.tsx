@@ -7,10 +7,6 @@ import { hardhat } from "wagmi/chains";
 import { createClient, WagmiConfig } from "wagmi";
 import { CHAIN_ID } from "../lib/const";
 
-// import WalletNotConnected from "./components/WalletNotConnected";
-// import WalletConnected from "./components/WalletConnected";
-// import SwitchNetwork from "./components/SwitchNetwork";
-
 const ethProvider = new providers.JsonRpcProvider(
   "http://127.0.0.1:8545",
   providers.getNetwork(CHAIN_ID)
