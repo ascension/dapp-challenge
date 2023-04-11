@@ -1,8 +1,7 @@
 {
-  "name": "hardhat",
+  "name": "@ascension/hardhat",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "start:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js node",
     "deploy:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network localhost run deploy.js",

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer, useState } from "react";
 import { useContract, useSigner } from "wagmi";
-import ContractArtifacts from "hardhat/dist/Tasks.json";
+// @ts-ignore
+import ContractArtifacts from "@ascension/hardhat/dist/Tasks.json";
 
 import { BigNumber } from "ethers";
 
