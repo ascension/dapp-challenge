@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Change to the correct directory
-cd /usr/src/app;
-
 # Start hardhat node as a background process
 yarn start:local &
 
