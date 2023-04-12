@@ -36,5 +36,6 @@ RUN ls -la && echo sdfljsdfljksdfljk
 COPY apps/hardhat/docker/entrypoint.sh /usr/local/bin
 
 WORKDIR /app/apps/hardhat
+EXPOSE 8545/tcp
 
 ENTRYPOINT ["/bin/sh", "/usr/local/bin/entrypoint.sh"]
