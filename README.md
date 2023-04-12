@@ -8,6 +8,10 @@ App is deployed to
 Hardhat is deployed to
 --> https://hardhat-rbl2.onrender.com
 
+## Don't want to setup this up locally?
+
+Import any of the private keys below and visit the [app](https://etherfi.vercel.app/)
+
 ## Setup
 
 ### Install Dependencies
