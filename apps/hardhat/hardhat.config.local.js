@@ -8,9 +8,5 @@ module.exports = {
     localhost: {
       chainId: 31337,
     },
-    render: {
-      url: "https://hardhat-rbl2.onrender.com",
-      chainId: 31337,
-    },
   },
 };

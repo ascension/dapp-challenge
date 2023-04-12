@@ -1,29 +1,12 @@
-import {
-  Text,
-  Flex,
-  Button,
-  Box,
-  Heading,
-  Input,
-  FormControl,
-  FormLabel,
-  HStack,
-  IconButton,
-  ButtonGroup,
-} from "@chakra-ui/react";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
+import { Text, Flex, Button, Container } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { Layout } from "../components/Layout";
 import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 import { CHAIN_ID } from "../lib/const";
-import {
-  ChangeEventHandler,
-  FormEventHandler,
-  useCallback,
-  useState,
-} from "react";
+import { useCallback } from "react";
 import ConnectWallet from "../components/ConnectWallet";
 import { useTaskContract } from "../hooks/useContract";
+import { Tasks } from "../components/Tasks";
 
 const SwitchNetwork: React.FC = () => {
   const { error, isLoading, switchNetwork } = useSwitchNetwork();
@@ -61,125 +44,9 @@ const ConnectedWallet = () => {
   }
 
   return (
-    <Flex>
-      <Flex>
-        <Flex>
-          <Flex>
-            <Heading color="white">New Task</Heading>
-          </Flex>
-        </Flex>
-        <Box>
-          <Heading color="white">Current Tasks</Heading>
-          <Tasks />
-        </Box>
-      </Flex>
-    </Flex>
-  );
-};
-
-const Tasks: React.FC = () => {
-  const { tasks, contract } = useTaskContract();
-
-  const [formState, setFormState] = useState({
-    name: "",
-    description: "",
-    dueDate: "",
-  });
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const newValue = event.target.value;
-    const key = event.target.id;
-    setFormState((prevState) => ({ ...prevState, [key]: newValue }));
-  };
-
-  const handleMarkCompleted = async (id: number) => {
-    const tx = await contract.completeTask(id);
-    await tx.wait();
-    // refetch();
-  };
-
-  const handleDeleteTask = async (id: number) => {
-    const tx = await contract.deleteTask(id);
-    await tx.wait();
-    // refetch();
-  };
-
-  const handleCreateTask: FormEventHandler = async (e) => {
-    e.preventDefault();
-    const { name, description, dueDate } = formState;
-    if (!name || !description || !dueDate) return;
-
-    const timestamp = new Date(dueDate + " UTC").getTime();
-    const tx = await contract.createTask(name, description, timestamp);
-
-    // should handle transaction not getting mined here
-    await tx.wait();
-
-    setFormState({ name: "", description: "", dueDate: "" });
-    // refetch();
-  };
-
-  return (
-    <Flex
-      color="white"
-      flexDir="column"
-      bg="rgba(14, 10, 49, 0.62)"
-      borderRadius={8}
-      p={8}
-      border="1px solid #2B2852"
-    >
-      <form onSubmit={handleCreateTask}>
-        <FormControl>
-          <FormLabel>Name</FormLabel>
-          <Input type="text" id="name" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Description</FormLabel>
-          <Input type="text" id="description" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Due Date</FormLabel>
-          <Input type="date" id="dueDate" onChange={handleChange} />
-        </FormControl>
-        <Button type="submit" colorScheme="blue">
-          Create Task
-        </Button>
-      </form>
-      <Flex flexDir="column">
-        {tasks.map((task) => (
-          <Flex
-            key={task.id.toString()}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Flex
-              border="1px solid white"
-              p={4}
-              borderRadius={8}
-              my={2}
-              justifyContent="space-between"
-            >
-              <Box>{task.name}</Box>
-              <Box>{task.description}</Box>
-            </Flex>
-            <ButtonGroup>
-              <IconButton
-                variant="outline"
-                aria-label="Mark Task Completed"
-                icon={<CheckIcon color="blue.300" />}
-                onClick={() => handleMarkCompleted(task.id.toNumber())}
-              />
-              <IconButton
-                variant="outline"
-                aria-label="Mark Task Completed"
-                icon={<CloseIcon color="red.300" />}
-                onClick={() => handleDeleteTask(task.id.toNumber())}
-              />
-            </ButtonGroup>
-          </Flex>
-        ))}
-      </Flex>
-    </Flex>
+    <Container maxW="container.lg">
+      <Tasks />
+    </Container>
   );
 };
 

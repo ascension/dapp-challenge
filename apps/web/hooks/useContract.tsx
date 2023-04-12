@@ -68,6 +68,39 @@ export const useTaskContract = () => {
     setTasks(tasks);
   }, [contract, isMounted]);
 
+  const createTask = useCallback(
+    async (name: string, description: string, dueDate: string) => {
+      const timestamp = new Date(dueDate + " UTC").getTime();
+      const tx = await contract.createTask(
+        name,
+        description,
+        timestamp,
+        timestamp
+      );
+      await tx.wait();
+      return getTasks();
+    },
+    [contract, getTasks]
+  );
+
+  const markTaskCompleted = useCallback(
+    async (id: number) => {
+      const tx = await contract.completeTask(id, new Date().getTime());
+      await tx.wait();
+      await getTasks();
+    },
+    [contract, getTasks]
+  );
+
+  const deleteTask = useCallback(
+    async (id: number) => {
+      const tx = await contract.deleteTask(id);
+      await tx.wait();
+      await getTasks();
+    },
+    [contract, getTasks]
+  );
+
   useEffect(() => {
     checkContractDeployment();
   }, [checkContractDeployment]);
@@ -81,6 +114,9 @@ export const useTaskContract = () => {
     isMounted,
     contractIsDeployed,
     setContractIsDeployed,
+    createTask,
+    deleteTask,
+    markTaskCompleted,
     contract,
     tasks,
     setTasks,
