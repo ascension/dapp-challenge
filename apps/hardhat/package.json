@@ -5,7 +5,7 @@
   "scripts": {
     "start:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js node --hostname 0.0.0.0",
     "deploy:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network localhost run deploy.js",
-    "deploy:web": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network https://hardhat-rbl2.onrender.com run deploy.js",
+    "deploy:web": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network render run deploy.js",
     "compile:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js compile",
     "test:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js test",
     "build": "tsc -p ."

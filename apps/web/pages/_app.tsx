@@ -8,7 +8,7 @@ import { createClient, WagmiConfig } from "wagmi";
 import { CHAIN_ID } from "../lib/const";
 
 const ethProvider = new providers.JsonRpcProvider(
-  "http://127.0.0.1:8545",
+  process.env.NEXT_PUBLIC_HARDHAT_HOST,
   providers.getNetwork(CHAIN_ID)
 );
 const connector = new InjectedConnector({ chains: [hardhat] });
