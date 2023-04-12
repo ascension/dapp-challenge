@@ -11,7 +11,7 @@ type Task = {
   description: string;
   dueDate: BigNumber;
   completed: boolean;
-  completedDate: boolean;
+  completedDate: BigNumber;
 };
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
