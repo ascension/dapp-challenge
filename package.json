@@ -18,6 +18,7 @@
     "docker:up": "docker run -it -d -p 8545:8545 --name hardhat hardhat",
     "docker:down": "docker rm -f hardhat",
     "dev": "turbo run dev",
+    "deploy:local": "turbo run deploy:local --scope=@ascension/hardhat",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test"

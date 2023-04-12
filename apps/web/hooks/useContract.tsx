@@ -11,6 +11,7 @@ type Task = {
   description: string;
   dueDate: BigNumber;
   completed: boolean;
+  completedDate: boolean;
 };
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
@@ -47,19 +48,17 @@ export const useTaskContract = () => {
   });
 
   const checkContractDeployment = useCallback(async () => {
-    console.log("checkContractDeployment", signer?.provider, CONTRACT_ADDRESS);
     if (!signer?.provider || !CONTRACT_ADDRESS) return;
 
     try {
       const contractCode = await signer?.provider?.getCode(CONTRACT_ADDRESS);
-      console.log({ contractCode, contractIsDeployed });
       if (contractCode === "0x") {
         setContractIsDeployed({ type: "deployed" });
       }
     } catch (error) {
       console.error("Error:", error);
     }
-  }, [contractIsDeployed, signer?.provider]);
+  }, [signer?.provider]);
 
   const getTasks = useCallback(async () => {
     if (!contract || !isMounted) return;
