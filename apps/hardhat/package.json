@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js node",
+    "start:prod": "./node_modules/.bin/hardhat --config hardhat.config.local.js node --hostname 0.0.0.0",
     "deploy:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network localhost run deploy.js",
     "deploy:web": "./node_modules/.bin/hardhat --config hardhat.config.local.js --network render run deploy.js",
     "compile:local": "./node_modules/.bin/hardhat --config hardhat.config.local.js compile",
